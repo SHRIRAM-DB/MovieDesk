@@ -7,9 +7,11 @@ function MovieDetails() {
   const params = useParams();
   const image = movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`: "https://plus.unsplash.com/premium_photo-1710965560034-778eedc929ff?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXRpZnVsJTIwd29ybGR8ZW58MHx8MHx8fDA%3D" ;
 
+
   useEffect(() => {
+    const apiKey = import.meta.env.VITE_API_KEY
     async function fetchMoiveDetails(){
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=4ba8a70e6c7b5080e7dd242e7cd82e3c`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${apiKey}`);
         const json = await response.json();
         setMovie(json)
     }
